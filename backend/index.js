@@ -10,12 +10,14 @@ const app = express();
 //     password: "",
 //     database: "test"
 // })
-const db = mysql.createConnection({
+const db = mysql.createPool({
+  connectionLimit: 10,
   host: "db",
   user: "root",
   password: "yourpassword",
   database: "test",
 });
+
 app.use(express.json()); //return json data using the api server postman
 
 app.use(cors());
